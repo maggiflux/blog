@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="table">
+        <br>
+        <br>
+        <h1>Todas las entradas</h1>
+        <hr>
+        <h5 class="text-center">(No olvidar de correr el <strong>seed!</strong>) ;)</h5>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div>
+            <h3>Entradas en curso</h3>
+
+            <div>
+                <table>
+                    <thead>
+                        <th>Fecha creación</th>
+                        <th>Título</th>
+                        <th>Contenido </th>
+                        
+                        <th>Imagen</th>
+                    </thead>
+
+                    <% @entry_open.each do |entry| %>
+                    <tbody>
+                        <th><%= entry.created_at %></th>
+                        <th><%= entry.title %></th>
+                        <th><%= entry.content %></th>
+                       
+                        <th><%= image_tag entry.image_url, style: 'height:50px;width:70px' %></th>
+                        <th><%= link_to 'editar', edit_entry_path(entry) %></th>
+                        <th><%= link_to 'eliminar', delete_entry_path(entry), method: :delete, data: {confirm: 'Seguro?'} %>
+                        </th>
+                    </tbody>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>
+        <h3>Entradas cerradas</h3>
+
+        <div>
+            <table>
+                <thead>
+                    <th>Fecha creación</th>
+                    <th>Título</th>
+                    <th>Contenido </th>
+               
+                    <th>Imagen</th>
+                </thead>
+
+                <% @entry_close.each do |entry| %>
+                <tbody>
+                    <th><%= entry.created_at %></th>
+                    <th><%= entry.title %></th>
+                    <th><%= entry.content %></th>
+                   
+                    <th><%= image_tag entry.image_url, style: 'height:50px;width:70px' %></th>
+                    <th><%= link_to 'editar', edit_entry_path(entry) %></th>
+                    <th><%= link_to 'eliminar', delete_entry_path(entry), method: :delete, data: {confirm: 'Seguro?'} %>
+                    </th>
+                </tbody>
+                <% end %>
+            </table>
+        </div>
+    </div>
+    <br>
+    <br>
+    <%= link_to 'Nueva entrada', new_entries_path, class:"btn btn-outline-primary font-weight-bolder text-decoration-none" %>
+</div>
+<br>
+<br>
